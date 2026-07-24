@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  title: Sleeper Drafts Players API
+  version: '1.0'
+  description: The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.
+  contact:
+    name: Sleeper API Docs
+    url: https://docs.sleeper.com/
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    source: https://docs.sleeper.com/
+    note: Authored by the API Evangelist enrichment pipeline from the operations documented at docs.sleeper.com. Sleeper does not publish an OpenAPI; every path, method, and parameter here is transcribed from the public docs.
+servers:
+- url: https://api.sleeper.app/v1
+  description: Sleeper read-only API (v1)
+tags:
+- name: Players
+paths:
+  /players/{sport}:
+    get:
+      operationId: getAllPlayers
+      summary: Get all players for a sport
+      description: Fetch every player in the sport (a large ~5MB payload). Intended to be called at most once per day and cached, not on every request.
+      tags:
+      - Players
+      parameters:
+      - name: sport
+        in: path
+        required: true
+        schema:
+          type: string
+          example: nfl
+      responses:
+        '200':
+          description: A map of player_id to player object.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Player'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /players/{sport}/trending/{type}:
+    get:
+      operationId: getTrendingPlayers
+      summary: Get trending players (adds or drops)
+      tags:
+      - Players
+      parameters:
+      - name: sport
+        in: path
+        required: true
+        schema:
+          type: string
+          example: nfl
+      - name: type
+        in: path
+        required: true
+        description: add or drop.
+        schema:
+          type: string
+          enum:
+          - add
+          - drop
+      - name: lookback_hours
+        in: query
+        required: false
+        description: Hours to look back (default 24).
+        schema:
+          type: integer
+          default: 24
+      - name: limit
+        in: query
+        required: false
+        description: Number of results (default 25).
+        schema:
+          type: integer
+          default: 25
+      responses:
+        '200':
+          description: Array of trending player objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrendingPlayer'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    TrendingPlayer:
+      type: object
+      properties:
+        player_id:
+          type: string
+          description: References a Player by player_id
+        count:
+          type: integer
+          description: Number of adds or drops in the lookback window
+    Player:
+      type: object
+      properties:
+        player_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        full_name:
+          type: string
+        team:
+          type: string
+        position:
+          type: string
+        fantasy_positions:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+        injury_status:
+          type: string
+          nullable: true
+        number:
+          type: integer
+          nullable: true
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.

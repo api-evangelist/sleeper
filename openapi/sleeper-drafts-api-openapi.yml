@@ -1,0 +1,251 @@
+openapi: 3.1.0
+info:
+  title: Sleeper Drafts API
+  version: '1.0'
+  description: The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.
+  contact:
+    name: Sleeper API Docs
+    url: https://docs.sleeper.com/
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    source: https://docs.sleeper.com/
+    note: Authored by the API Evangelist enrichment pipeline from the operations documented at docs.sleeper.com. Sleeper does not publish an OpenAPI; every path, method, and parameter here is transcribed from the public docs.
+servers:
+- url: https://api.sleeper.app/v1
+  description: Sleeper read-only API (v1)
+tags:
+- name: Drafts
+paths:
+  /league/{league_id}/traded_picks:
+    get:
+      operationId: getLeagueTradedPicks
+      summary: Get all traded draft picks in a league
+      tags:
+      - Drafts
+      parameters:
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of traded pick objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TradedPick'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /user/{user_id}/drafts/{sport}/{season}:
+    get:
+      operationId: getUserDrafts
+      summary: Get all drafts for a user
+      tags:
+      - Drafts
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: sport
+        in: path
+        required: true
+        schema:
+          type: string
+          example: nfl
+      - name: season
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '2025'
+      responses:
+        '200':
+          description: Array of draft objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Draft'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /league/{league_id}/drafts:
+    get:
+      operationId: getLeagueDrafts
+      summary: Get all drafts for a league
+      tags:
+      - Drafts
+      parameters:
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of draft objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Draft'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /draft/{draft_id}:
+    get:
+      operationId: getDraft
+      summary: Get a specific draft
+      tags:
+      - Drafts
+      parameters:
+      - name: draft_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A draft object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Draft'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /draft/{draft_id}/picks:
+    get:
+      operationId: getDraftPicks
+      summary: Get all picks in a draft
+      tags:
+      - Drafts
+      parameters:
+      - name: draft_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of draft pick objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DraftPick'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /draft/{draft_id}/traded_picks:
+    get:
+      operationId: getDraftTradedPicks
+      summary: Get all traded picks in a draft
+      tags:
+      - Drafts
+      parameters:
+      - name: draft_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of traded pick objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TradedPick'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    Draft:
+      type: object
+      properties:
+        draft_id:
+          type: string
+        league_id:
+          type: string
+          description: References a League by league_id
+        type:
+          type: string
+          description: snake
+          auction: null
+          or linear: null
+        status:
+          type: string
+        sport:
+          type: string
+        season:
+          type: string
+        settings:
+          type: object
+        draft_order:
+          type: object
+          description: Map of user_id to draft slot
+        slot_to_roster_id:
+          type: object
+        start_time:
+          type: integer
+    TradedPick:
+      type: object
+      properties:
+        season:
+          type: string
+        round:
+          type: integer
+        roster_id:
+          type: integer
+          description: Original owner Roster of the pick
+        previous_owner_id:
+          type: integer
+          description: Previous owner roster_id
+        owner_id:
+          type: integer
+          description: Current owner roster_id
+    DraftPick:
+      type: object
+      properties:
+        draft_id:
+          type: string
+          description: References a Draft by draft_id
+        pick_no:
+          type: integer
+        round:
+          type: integer
+        roster_id:
+          type: integer
+          description: References a Roster by roster_id
+        player_id:
+          type: string
+          description: References a Player by player_id
+        picked_by:
+          type: string
+          description: References a User by user_id
+        metadata:
+          type: object
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.

@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: Sleeper Drafts Matchups API
+  version: '1.0'
+  description: The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.
+  contact:
+    name: Sleeper API Docs
+    url: https://docs.sleeper.com/
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    source: https://docs.sleeper.com/
+    note: Authored by the API Evangelist enrichment pipeline from the operations documented at docs.sleeper.com. Sleeper does not publish an OpenAPI; every path, method, and parameter here is transcribed from the public docs.
+servers:
+- url: https://api.sleeper.app/v1
+  description: Sleeper read-only API (v1)
+tags:
+- name: Matchups
+paths:
+  /league/{league_id}/matchups/{week}:
+    get:
+      operationId: getLeagueMatchups
+      summary: Get all matchups in a league for a week
+      tags:
+      - Matchups
+      parameters:
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: week
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: Array of matchup objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Matchup'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    Matchup:
+      type: object
+      properties:
+        roster_id:
+          type: integer
+          description: References a Roster by roster_id
+        matchup_id:
+          type: integer
+          description: Rosters sharing a matchup_id play each other
+        points:
+          type: number
+        players:
+          type: array
+          items:
+            type: string
+        starters:
+          type: array
+          items:
+            type: string
+        players_points:
+          type: object
+        custom_points:
+          type: number
+          nullable: true
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.

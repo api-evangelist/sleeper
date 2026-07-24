@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: Sleeper Drafts Users API
+  version: '1.0'
+  description: The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.
+  contact:
+    name: Sleeper API Docs
+    url: https://docs.sleeper.com/
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    source: https://docs.sleeper.com/
+    note: Authored by the API Evangelist enrichment pipeline from the operations documented at docs.sleeper.com. Sleeper does not publish an OpenAPI; every path, method, and parameter here is transcribed from the public docs.
+servers:
+- url: https://api.sleeper.app/v1
+  description: Sleeper read-only API (v1)
+tags:
+- name: Users
+paths:
+  /user/{id_or_username}:
+    get:
+      operationId: getUser
+      summary: Get a user by username or user_id
+      description: Retrieve a user object by either their username or their numeric user_id. Returns the user's user_id, username, display_name and avatar.
+      tags:
+      - Users
+      parameters:
+      - name: id_or_username
+        in: path
+        required: true
+        description: The Sleeper username or numeric user_id.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A user object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+        username:
+          type: string
+        display_name:
+          type: string
+        avatar:
+          type: string
+          description: Avatar id; resolve at https://sleepercdn.com/avatars/{avatar}
+        metadata:
+          type: object
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.

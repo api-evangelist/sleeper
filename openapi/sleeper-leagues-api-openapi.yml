@@ -1,0 +1,215 @@
+openapi: 3.1.0
+info:
+  title: Sleeper Drafts Leagues API
+  version: '1.0'
+  description: The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.
+  contact:
+    name: Sleeper API Docs
+    url: https://docs.sleeper.com/
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    source: https://docs.sleeper.com/
+    note: Authored by the API Evangelist enrichment pipeline from the operations documented at docs.sleeper.com. Sleeper does not publish an OpenAPI; every path, method, and parameter here is transcribed from the public docs.
+servers:
+- url: https://api.sleeper.app/v1
+  description: Sleeper read-only API (v1)
+tags:
+- name: Leagues
+paths:
+  /user/{user_id}/leagues/{sport}/{season}:
+    get:
+      operationId: getUserLeagues
+      summary: Get all leagues for a user
+      description: All leagues a user is a member of for a given sport and season.
+      tags:
+      - Leagues
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: sport
+        in: path
+        required: true
+        schema:
+          type: string
+          example: nfl
+      - name: season
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '2025'
+      responses:
+        '200':
+          description: Array of league objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/League'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /league/{league_id}:
+    get:
+      operationId: getLeague
+      summary: Get a specific league
+      tags:
+      - Leagues
+      parameters:
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A league object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/League'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /league/{league_id}/rosters:
+    get:
+      operationId: getLeagueRosters
+      summary: Get all rosters in a league
+      tags:
+      - Leagues
+      parameters:
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of roster objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Roster'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /league/{league_id}/users:
+    get:
+      operationId: getLeagueUsers
+      summary: Get all users in a league
+      tags:
+      - Leagues
+      parameters:
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of user objects (with league-specific metadata).
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    Roster:
+      type: object
+      properties:
+        roster_id:
+          type: integer
+        owner_id:
+          type: string
+          description: References a User by user_id
+        league_id:
+          type: string
+          description: References a League by league_id
+        players:
+          type: array
+          items:
+            type: string
+          description: player_id references
+        starters:
+          type: array
+          items:
+            type: string
+          description: player_id references
+        reserve:
+          type: array
+          items:
+            type: string
+        settings:
+          type: object
+    League:
+      type: object
+      properties:
+        league_id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          description: e.g. pre_draft
+          drafting: null
+          in_season: null
+          complete: null
+        sport:
+          type: string
+        season:
+          type: string
+        season_type:
+          type: string
+        total_rosters:
+          type: integer
+        settings:
+          type: object
+        scoring_settings:
+          type: object
+        roster_positions:
+          type: array
+          items:
+            type: string
+        previous_league_id:
+          type: string
+          description: References the prior season League by league_id
+        draft_id:
+          type: string
+          description: References the Draft by draft_id
+        avatar:
+          type: string
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+        username:
+          type: string
+        display_name:
+          type: string
+        avatar:
+          type: string
+          description: Avatar id; resolve at https://sleepercdn.com/avatars/{avatar}
+        metadata:
+          type: object
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.

@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: Sleeper Drafts State API
+  version: '1.0'
+  description: The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.
+  contact:
+    name: Sleeper API Docs
+    url: https://docs.sleeper.com/
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    source: https://docs.sleeper.com/
+    note: Authored by the API Evangelist enrichment pipeline from the operations documented at docs.sleeper.com. Sleeper does not publish an OpenAPI; every path, method, and parameter here is transcribed from the public docs.
+servers:
+- url: https://api.sleeper.app/v1
+  description: Sleeper read-only API (v1)
+tags:
+- name: State
+paths:
+  /state/{sport}:
+    get:
+      operationId: getSportState
+      summary: Get the current state of a sport
+      description: Current week, season, season type and related league-year state for a sport.
+      tags:
+      - State
+      parameters:
+      - name: sport
+        in: path
+        required: true
+        schema:
+          type: string
+          example: nfl
+      responses:
+        '200':
+          description: A state object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportState'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    SportState:
+      type: object
+      properties:
+        week:
+          type: integer
+        season:
+          type: string
+        season_type:
+          type: string
+          description: pre
+          regular: null
+          or post: null
+        league_season:
+          type: string
+        previous_season:
+          type: string
+        display_week:
+          type: integer
+        leg:
+          type: integer
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.

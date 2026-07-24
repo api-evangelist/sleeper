@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Sleeper Drafts Transactions API
+  version: '1.0'
+  description: The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.
+  contact:
+    name: Sleeper API Docs
+    url: https://docs.sleeper.com/
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    source: https://docs.sleeper.com/
+    note: Authored by the API Evangelist enrichment pipeline from the operations documented at docs.sleeper.com. Sleeper does not publish an OpenAPI; every path, method, and parameter here is transcribed from the public docs.
+servers:
+- url: https://api.sleeper.app/v1
+  description: Sleeper read-only API (v1)
+tags:
+- name: Transactions
+paths:
+  /league/{league_id}/transactions/{round}:
+    get:
+      operationId: getLeagueTransactions
+      summary: Get transactions (trades, waivers, free-agent moves) for a week
+      tags:
+      - Transactions
+      parameters:
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: round
+        in: path
+        required: true
+        description: The week/round of transactions.
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: Array of transaction objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    TradedPick:
+      type: object
+      properties:
+        season:
+          type: string
+        round:
+          type: integer
+        roster_id:
+          type: integer
+          description: Original owner Roster of the pick
+        previous_owner_id:
+          type: integer
+          description: Previous owner roster_id
+        owner_id:
+          type: integer
+          description: Current owner roster_id
+    Transaction:
+      type: object
+      properties:
+        transaction_id:
+          type: string
+        type:
+          type: string
+          description: trade
+          waiver: null
+          or free_agent: null
+        status:
+          type: string
+        roster_ids:
+          type: array
+          items:
+            type: integer
+        adds:
+          type: object
+          description: Map of player_id to roster_id
+        drops:
+          type: object
+          description: Map of player_id to roster_id
+        draft_picks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TradedPick'
+        waiver_budget:
+          type: array
+          items:
+            type: object
+        created:
+          type: integer
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
