@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sleeper-openapi.yml
+note: >-
+  Cross-cutting standards conformance derived from the Sleeper OpenAPI and docs.
+  Sleeper is a minimal read-only JSON/REST API; it does not implement OAuth,
+  OIDC, RFC 9457 problem+json, or any regulated-industry profile.
+standards:
+  - id: rest-json
+    conforms: true
+    evidence: All operations are HTTPS GET requests returning JSON.
+  - id: oauth2
+    conforms: false
+    evidence: No authentication — public read-only API.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use bare HTTP status codes, not application/problem+json.
+  - id: pagination
+    conforms: false
+    evidence: Collections return full arrays; no cursor/offset pagination.
+  - id: idempotency
+    conforms: true
+    evidence: GET-only surface; all operations are safe and idempotent by HTTP semantics.
+  - id: webhooks
+    conforms: false
+    evidence: No webhook or event surface is published.

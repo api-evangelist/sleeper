@@ -1,0 +1,28 @@
+{
+  "provider": "sleeper",
+  "sources": [
+    "sleeper-drafts-api-openapi.yml",
+    "sleeper-leagues-api-openapi.yml",
+    "sleeper-matchups-api-openapi.yml",
+    "sleeper-players-api-openapi.yml",
+    "sleeper-playoffs-api-openapi.yml",
+    "sleeper-state-api-openapi.yml",
+    "sleeper-transactions-api-openapi.yml",
+    "sleeper-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "sleeper-drafts-api-openapi.yml",
+    "sleeper-leagues-api-openapi.yml",
+    "sleeper-matchups-api-openapi.yml",
+    "sleeper-players-api-openapi.yml",
+    "sleeper-playoffs-api-openapi.yml",
+    "sleeper-state-api-openapi.yml",
+    "sleeper-transactions-api-openapi.yml",
+    "sleeper-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

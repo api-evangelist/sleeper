@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Sleeper API
+  version: 1.0.0
+extends: openapi/sleeper-openapi.yml
+x-provenance:
+  generated: '2026-07-21'
+  method: generated
+  source: https://docs.sleeper.com/
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: true
+      x-api-style: read-only-rest
+      x-authentication: none
+  - target: $.info
+    update:
+      x-rate-limit: ~1000 requests per minute per IP; 429 + IP block on overage
+  - target: $.paths['/players/{sport}'].get
+    update:
+      x-caching-guidance: >-
+        ~5MB payload of all players; fetch at most once per day and cache — do
+        not call per request.

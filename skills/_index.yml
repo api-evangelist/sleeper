@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/sleeper-openapi.yml
+skills:
+  - file: sleeper-league-standings.md
+    name: Get a league's teams and weekly matchups
+    api: openapi/sleeper-openapi.yml
+    operations: [getLeague, getLeagueRosters, getLeagueUsers, getSportState, getLeagueMatchups]
+  - file: sleeper-user-leagues.md
+    name: Find a user's leagues and drafts
+    api: openapi/sleeper-openapi.yml
+    operations: [getUser, getUserLeagues, getUserDrafts, getSportState]
+  - file: sleeper-draft-results.md
+    name: Read a draft's picks and trends
+    api: openapi/sleeper-openapi.yml
+    operations: [getDraft, getDraftPicks, getDraftTradedPicks, getAllPlayers, getTrendingPlayers]

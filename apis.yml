@@ -1,22 +1,210 @@
 aid: sleeper
 name: Sleeper
-description: Sleeper is a company surfaced as a portfolio company of a16z, general-catalyst and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Sleeper is a fantasy sports platform — a mobile-first app for creating and
+  managing fantasy football, basketball, and other sports leagues with chat,
+  drafts, waivers, and real-time scoring built in. Sleeper publishes a free,
+  read-only HTTP API at api.sleeper.app that exposes public fantasy data: users,
+  leagues, rosters, matchups, transactions, drafts, draft picks, traded picks,
+  trending players, and the current sport/season state. The API requires no API
+  token or OAuth because no content can be modified through it; every endpoint
+  is a GET request returning JSON, and callers are asked to stay under 1,000
+  requests per minute to avoid IP blocks. Sleeper is backed by a16z and General
+  Catalyst.
 url: https://raw.githubusercontent.com/api-evangelist/sleeper/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
 - general-catalyst
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: has-public-api
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://sleepercdn.com/images/v2/icons/app_icon_web.png
 tags:
 - Company
-apis: []
+- Fantasy Sports
+- Sports
+- Fantasy Football
+- Gaming
+- Sports Data
+- Leagues
+- Consumer
+apis:
+- aid: sleeper:sleeper-drafts-api
+  name: Sleeper Drafts API
+  description: The Drafts API from Sleeper — 6 operation(s) for drafts.
+  humanURL: https://docs.sleeper.com/
+  baseURL: https://api.sleeper.app/v1
+  tags:
+  - Drafts
+  properties:
+  - type: OpenAPI
+    url: openapi/sleeper-drafts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sleeper.com/
+  - type: APIReference
+    url: https://docs.sleeper.com/
+- aid: sleeper:sleeper-leagues-api
+  name: Sleeper Leagues API
+  description: The Leagues API from Sleeper — 4 operation(s) for leagues.
+  humanURL: https://docs.sleeper.com/
+  baseURL: https://api.sleeper.app/v1
+  tags:
+  - Leagues
+  properties:
+  - type: OpenAPI
+    url: openapi/sleeper-leagues-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sleeper.com/
+  - type: APIReference
+    url: https://docs.sleeper.com/
+- aid: sleeper:sleeper-matchups-api
+  name: Sleeper Matchups API
+  description: The Matchups API from Sleeper — 1 operation(s) for matchups.
+  humanURL: https://docs.sleeper.com/
+  baseURL: https://api.sleeper.app/v1
+  tags:
+  - Matchups
+  properties:
+  - type: OpenAPI
+    url: openapi/sleeper-matchups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sleeper.com/
+  - type: APIReference
+    url: https://docs.sleeper.com/
+- aid: sleeper:sleeper-players-api
+  name: Sleeper Players API
+  description: The Players API from Sleeper — 2 operation(s) for players.
+  humanURL: https://docs.sleeper.com/
+  baseURL: https://api.sleeper.app/v1
+  tags:
+  - Players
+  properties:
+  - type: OpenAPI
+    url: openapi/sleeper-players-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sleeper.com/
+  - type: APIReference
+    url: https://docs.sleeper.com/
+- aid: sleeper:sleeper-playoffs-api
+  name: Sleeper Playoffs API
+  description: The Playoffs API from Sleeper — 2 operation(s) for playoffs.
+  humanURL: https://docs.sleeper.com/
+  baseURL: https://api.sleeper.app/v1
+  tags:
+  - Playoffs
+  properties:
+  - type: OpenAPI
+    url: openapi/sleeper-playoffs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sleeper.com/
+  - type: APIReference
+    url: https://docs.sleeper.com/
+- aid: sleeper:sleeper-state-api
+  name: Sleeper State API
+  description: The State API from Sleeper — 1 operation(s) for state.
+  humanURL: https://docs.sleeper.com/
+  baseURL: https://api.sleeper.app/v1
+  tags:
+  - State
+  properties:
+  - type: OpenAPI
+    url: openapi/sleeper-state-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sleeper.com/
+  - type: APIReference
+    url: https://docs.sleeper.com/
+- aid: sleeper:sleeper-transactions-api
+  name: Sleeper Transactions API
+  description: The Transactions API from Sleeper — 1 operation(s) for transactions.
+  humanURL: https://docs.sleeper.com/
+  baseURL: https://api.sleeper.app/v1
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/sleeper-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sleeper.com/
+  - type: APIReference
+    url: https://docs.sleeper.com/
+- aid: sleeper:sleeper-users-api
+  name: Sleeper Users API
+  description: The Users API from Sleeper — 1 operation(s) for users.
+  humanURL: https://docs.sleeper.com/
+  baseURL: https://api.sleeper.app/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/sleeper-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sleeper.com/
+  - type: APIReference
+    url: https://docs.sleeper.com/
+common:
+- type: DomainSecurity
+  url: security/sleeper-domain-security.yml
+- type: DeveloperPortal
+  url: https://docs.sleeper.com/
+- type: Documentation
+  url: https://docs.sleeper.com/
+- type: APIReference
+  url: https://docs.sleeper.com/
+- type: SignUp
+  url: https://sleeper.com/
+- type: Support
+  url: https://support.sleeper.com/
+- type: Blog
+  url: https://blog.sleeper.com/
+- type: TermsOfService
+  url: https://sleeper.com/terms
+- type: PrivacyPolicy
+  url: https://sleeper.com/privacy
+- type: Authentication
+  url: authentication/sleeper-authentication.yml
+- type: ErrorCatalog
+  url: errors/sleeper-problem-types.yml
+- type: Conventions
+  url: conventions/sleeper-conventions.yml
+- type: DataModel
+  url: data-model/sleeper-data-model.yml
+- type: MCPServer
+  url: mcp/sleeper-mcp.yml
+- type: LLMsTxt
+  url: llms/sleeper-llms.txt
+- type: Overlay
+  url: overlays/sleeper-openapi-overlay.yaml
+- type: Conformance
+  url: conformance/sleeper-conformance.yml
+- type: Lifecycle
+  url: lifecycle/sleeper-lifecycle.yml
+- type: WellKnown
+  url: well-known/sleeper-well-known.yml
+- type: Packages
+  url: packages/sleeper-packages.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

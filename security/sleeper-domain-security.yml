@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: docs.sleeper.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 20 14:05:19 2026 GMT
+  hsts: false
+- host: api.sleeper.app
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 21 21:44:25 2026 GMT
+  hsts: true
+  hsts_max_age: 15724800
+domains:
+- domain: sleeper.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: sleeper.app
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false

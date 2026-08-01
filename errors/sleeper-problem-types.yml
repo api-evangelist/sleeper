@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sleeper-openapi.yml
+docs: https://docs.sleeper.com/
+format: http-status
+note: >-
+  Sleeper does not publish an RFC 9457 problem+json error catalog. Errors are
+  signaled with standard HTTP status codes; the body is typically empty or a
+  plain JSON message. This catalog is derived from the HTTP status codes
+  documented at docs.sleeper.com plus the responses in openapi/sleeper-openapi.yml.
+problems:
+  - status: 400
+    title: Bad Request
+    meaning: The request was malformed (e.g. a missing or invalid path segment).
+    remediation: Check the path parameters and query values against the docs.
+  - status: 404
+    title: Not Found
+    meaning: The requested user, league, draft, roster, or player does not exist.
+    remediation: Verify the id/username and season/sport values.
+  - status: 429
+    title: Too Many Requests
+    meaning: Rate limit exceeded; sustained traffic over ~1,000 calls/minute risks an IP block.
+    remediation: Back off, cache large payloads (e.g. /players), and stay under 1,000 req/min.
+  - status: 500
+    title: Internal Server Error
+    meaning: An unexpected server-side error occurred.
+    remediation: Retry with backoff; if persistent, report to Sleeper support.
+  - status: 503
+    title: Service Unavailable
+    meaning: The API is temporarily unavailable or overloaded.
+    remediation: Retry later with exponential backoff.

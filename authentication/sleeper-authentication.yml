@@ -1,0 +1,15 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sleeper.com/
+docs: https://docs.sleeper.com/
+summary:
+  types: [none]
+  api_key_in: []
+  oauth2_flows: []
+  note: >-
+    The Sleeper API is public and read-only. No API token, API key, or OAuth is
+    required or accepted — the docs state "you do not need a token to use the
+    Sleeper API" because no content can be modified through it. Requests are
+    plain HTTPS GET calls. Access control is therefore by IP-based rate limiting
+    (stay under 1,000 requests/minute) rather than authentication.
+schemes: []

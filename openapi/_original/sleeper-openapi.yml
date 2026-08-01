@@ -1,0 +1,472 @@
+openapi: 3.1.0
+info:
+  title: Sleeper API
+  version: '1.0'
+  description: >-
+    The Sleeper API is a read-only HTTP API that exposes public fantasy sports
+    data — users, leagues, rosters, matchups, transactions, drafts, draft picks,
+    traded picks, and players. It is free to use and requires no API token,
+    because no content can be modified through it. All endpoints are GET
+    requests that return JSON.
+  contact:
+    name: Sleeper API Docs
+    url: https://docs.sleeper.com/
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    source: https://docs.sleeper.com/
+    note: >-
+      Authored by the API Evangelist enrichment pipeline from the operations
+      documented at docs.sleeper.com. Sleeper does not publish an OpenAPI; every
+      path, method, and parameter here is transcribed from the public docs.
+servers:
+  - url: https://api.sleeper.app/v1
+    description: Sleeper read-only API (v1)
+paths:
+  /user/{id_or_username}:
+    get:
+      operationId: getUser
+      summary: Get a user by username or user_id
+      description: >-
+        Retrieve a user object by either their username or their numeric
+        user_id. Returns the user's user_id, username, display_name and avatar.
+      tags: [Users]
+      parameters:
+        - name: id_or_username
+          in: path
+          required: true
+          description: The Sleeper username or numeric user_id.
+          schema: { type: string }
+      responses:
+        '200':
+          description: A user object.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/User' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /user/{user_id}/leagues/{sport}/{season}:
+    get:
+      operationId: getUserLeagues
+      summary: Get all leagues for a user
+      description: All leagues a user is a member of for a given sport and season.
+      tags: [Leagues]
+      parameters:
+        - { name: user_id, in: path, required: true, schema: { type: string } }
+        - { name: sport, in: path, required: true, schema: { type: string, example: nfl } }
+        - { name: season, in: path, required: true, schema: { type: string, example: '2025' } }
+      responses:
+        '200':
+          description: Array of league objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/League' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}:
+    get:
+      operationId: getLeague
+      summary: Get a specific league
+      tags: [Leagues]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: A league object.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/League' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}/rosters:
+    get:
+      operationId: getLeagueRosters
+      summary: Get all rosters in a league
+      tags: [Leagues]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of roster objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Roster' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}/users:
+    get:
+      operationId: getLeagueUsers
+      summary: Get all users in a league
+      tags: [Leagues]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of user objects (with league-specific metadata).
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/User' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}/matchups/{week}:
+    get:
+      operationId: getLeagueMatchups
+      summary: Get all matchups in a league for a week
+      tags: [Matchups]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+        - { name: week, in: path, required: true, schema: { type: integer, example: 1 } }
+      responses:
+        '200':
+          description: Array of matchup objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Matchup' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}/winners_bracket:
+    get:
+      operationId: getWinnersBracket
+      summary: Get the playoff winners bracket for a league
+      tags: [Playoffs]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of bracket matchup objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/BracketMatchup' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}/losers_bracket:
+    get:
+      operationId: getLosersBracket
+      summary: Get the consolation (losers) bracket for a league
+      tags: [Playoffs]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of bracket matchup objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/BracketMatchup' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}/transactions/{round}:
+    get:
+      operationId: getLeagueTransactions
+      summary: Get transactions (trades, waivers, free-agent moves) for a week
+      tags: [Transactions]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+        - { name: round, in: path, required: true, description: The week/round of transactions., schema: { type: integer, example: 1 } }
+      responses:
+        '200':
+          description: Array of transaction objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Transaction' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}/traded_picks:
+    get:
+      operationId: getLeagueTradedPicks
+      summary: Get all traded draft picks in a league
+      tags: [Drafts]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of traded pick objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/TradedPick' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /state/{sport}:
+    get:
+      operationId: getSportState
+      summary: Get the current state of a sport
+      description: Current week, season, season type and related league-year state for a sport.
+      tags: [State]
+      parameters:
+        - { name: sport, in: path, required: true, schema: { type: string, example: nfl } }
+      responses:
+        '200':
+          description: A state object.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SportState' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /user/{user_id}/drafts/{sport}/{season}:
+    get:
+      operationId: getUserDrafts
+      summary: Get all drafts for a user
+      tags: [Drafts]
+      parameters:
+        - { name: user_id, in: path, required: true, schema: { type: string } }
+        - { name: sport, in: path, required: true, schema: { type: string, example: nfl } }
+        - { name: season, in: path, required: true, schema: { type: string, example: '2025' } }
+      responses:
+        '200':
+          description: Array of draft objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Draft' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /league/{league_id}/drafts:
+    get:
+      operationId: getLeagueDrafts
+      summary: Get all drafts for a league
+      tags: [Drafts]
+      parameters:
+        - { name: league_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of draft objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Draft' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /draft/{draft_id}:
+    get:
+      operationId: getDraft
+      summary: Get a specific draft
+      tags: [Drafts]
+      parameters:
+        - { name: draft_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: A draft object.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Draft' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /draft/{draft_id}/picks:
+    get:
+      operationId: getDraftPicks
+      summary: Get all picks in a draft
+      tags: [Drafts]
+      parameters:
+        - { name: draft_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of draft pick objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/DraftPick' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /draft/{draft_id}/traded_picks:
+    get:
+      operationId: getDraftTradedPicks
+      summary: Get all traded picks in a draft
+      tags: [Drafts]
+      parameters:
+        - { name: draft_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Array of traded pick objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/TradedPick' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /players/{sport}:
+    get:
+      operationId: getAllPlayers
+      summary: Get all players for a sport
+      description: >-
+        Fetch every player in the sport (a large ~5MB payload). Intended to be
+        called at most once per day and cached, not on every request.
+      tags: [Players]
+      parameters:
+        - { name: sport, in: path, required: true, schema: { type: string, example: nfl } }
+      responses:
+        '200':
+          description: A map of player_id to player object.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: { $ref: '#/components/schemas/Player' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /players/{sport}/trending/{type}:
+    get:
+      operationId: getTrendingPlayers
+      summary: Get trending players (adds or drops)
+      tags: [Players]
+      parameters:
+        - { name: sport, in: path, required: true, schema: { type: string, example: nfl } }
+        - { name: type, in: path, required: true, description: add or drop., schema: { type: string, enum: [add, drop] } }
+        - { name: lookback_hours, in: query, required: false, description: Hours to look back (default 24)., schema: { type: integer, default: 24 } }
+        - { name: limit, in: query, required: false, description: Number of results (default 25)., schema: { type: integer, default: 25 } }
+      responses:
+        '200':
+          description: Array of trending player objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/TrendingPlayer' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
+  schemas:
+    User:
+      type: object
+      properties:
+        user_id: { type: string }
+        username: { type: string }
+        display_name: { type: string }
+        avatar: { type: string, description: "Avatar id; resolve at https://sleepercdn.com/avatars/{avatar}" }
+        metadata: { type: object }
+    League:
+      type: object
+      properties:
+        league_id: { type: string }
+        name: { type: string }
+        status: { type: string, description: e.g. pre_draft, drafting, in_season, complete }
+        sport: { type: string }
+        season: { type: string }
+        season_type: { type: string }
+        total_rosters: { type: integer }
+        settings: { type: object }
+        scoring_settings: { type: object }
+        roster_positions: { type: array, items: { type: string } }
+        previous_league_id: { type: string, description: References the prior season League by league_id }
+        draft_id: { type: string, description: References the Draft by draft_id }
+        avatar: { type: string }
+    Roster:
+      type: object
+      properties:
+        roster_id: { type: integer }
+        owner_id: { type: string, description: References a User by user_id }
+        league_id: { type: string, description: References a League by league_id }
+        players: { type: array, items: { type: string }, description: player_id references }
+        starters: { type: array, items: { type: string }, description: player_id references }
+        reserve: { type: array, items: { type: string } }
+        settings: { type: object }
+    Matchup:
+      type: object
+      properties:
+        roster_id: { type: integer, description: References a Roster by roster_id }
+        matchup_id: { type: integer, description: Rosters sharing a matchup_id play each other }
+        points: { type: number }
+        players: { type: array, items: { type: string } }
+        starters: { type: array, items: { type: string } }
+        players_points: { type: object }
+        custom_points: { type: number, nullable: true }
+    BracketMatchup:
+      type: object
+      properties:
+        r: { type: integer, description: Round number }
+        m: { type: integer, description: Match id within the bracket }
+        t1: { type: integer, description: roster_id of team 1 }
+        t2: { type: integer, description: roster_id of team 2 }
+        w: { type: integer, description: roster_id of the winner }
+        l: { type: integer, description: roster_id of the loser }
+    Transaction:
+      type: object
+      properties:
+        transaction_id: { type: string }
+        type: { type: string, description: trade, waiver, or free_agent }
+        status: { type: string }
+        roster_ids: { type: array, items: { type: integer } }
+        adds: { type: object, description: Map of player_id to roster_id }
+        drops: { type: object, description: Map of player_id to roster_id }
+        draft_picks: { type: array, items: { $ref: '#/components/schemas/TradedPick' } }
+        waiver_budget: { type: array, items: { type: object } }
+        created: { type: integer }
+    Draft:
+      type: object
+      properties:
+        draft_id: { type: string }
+        league_id: { type: string, description: References a League by league_id }
+        type: { type: string, description: snake, auction, or linear }
+        status: { type: string }
+        sport: { type: string }
+        season: { type: string }
+        settings: { type: object }
+        draft_order: { type: object, description: Map of user_id to draft slot }
+        slot_to_roster_id: { type: object }
+        start_time: { type: integer }
+    DraftPick:
+      type: object
+      properties:
+        draft_id: { type: string, description: References a Draft by draft_id }
+        pick_no: { type: integer }
+        round: { type: integer }
+        roster_id: { type: integer, description: References a Roster by roster_id }
+        player_id: { type: string, description: References a Player by player_id }
+        picked_by: { type: string, description: References a User by user_id }
+        metadata: { type: object }
+    TradedPick:
+      type: object
+      properties:
+        season: { type: string }
+        round: { type: integer }
+        roster_id: { type: integer, description: Original owner Roster of the pick }
+        previous_owner_id: { type: integer, description: Previous owner roster_id }
+        owner_id: { type: integer, description: Current owner roster_id }
+    SportState:
+      type: object
+      properties:
+        week: { type: integer }
+        season: { type: string }
+        season_type: { type: string, description: pre, regular, or post }
+        league_season: { type: string }
+        previous_season: { type: string }
+        display_week: { type: integer }
+        leg: { type: integer }
+    Player:
+      type: object
+      properties:
+        player_id: { type: string }
+        first_name: { type: string }
+        last_name: { type: string }
+        full_name: { type: string }
+        team: { type: string }
+        position: { type: string }
+        fantasy_positions: { type: array, items: { type: string } }
+        status: { type: string }
+        injury_status: { type: string, nullable: true }
+        number: { type: integer, nullable: true }
+    TrendingPlayer:
+      type: object
+      properties:
+        player_id: { type: string, description: References a Player by player_id }
+        count: { type: integer, description: Number of adds or drops in the lookback window }

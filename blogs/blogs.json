@@ -1,0 +1,14 @@
+{
+  "repo": "sleeper",
+  "feeds": [
+    {
+      "source": "https://support.sleeper.com/",
+      "feed_url": "https://support.sleeper.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-01T15:38:58Z"
+}

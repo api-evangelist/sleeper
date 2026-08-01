@@ -1,0 +1,39 @@
+# Sleeper API
+
+> Sleeper is a fantasy sports platform. Its public API is a free, read-only HTTP API at api.sleeper.app exposing users, leagues, rosters, matchups, transactions, drafts, picks, traded picks, trending players, and sport/season state. No API token or OAuth is required; every endpoint is a GET returning JSON. Stay under ~1,000 requests per minute per IP to avoid being blocked.
+
+## APIs
+- [Sleeper API docs](https://docs.sleeper.com/): Official read-only API reference (base URL https://api.sleeper.app/v1).
+
+## Specs
+- [OpenAPI (generated)](https://raw.githubusercontent.com/api-evangelist/sleeper/refs/heads/main/openapi/sleeper-openapi.yml): OpenAPI 3.1 authored by API Evangelist from the documented operations.
+
+## Endpoints
+- GET /user/{id_or_username} — get a user by username or user_id
+- GET /user/{user_id}/leagues/{sport}/{season} — all leagues for a user
+- GET /league/{league_id} — a specific league
+- GET /league/{league_id}/rosters — rosters in a league
+- GET /league/{league_id}/users — users in a league
+- GET /league/{league_id}/matchups/{week} — matchups for a week
+- GET /league/{league_id}/winners_bracket — playoff winners bracket
+- GET /league/{league_id}/losers_bracket — consolation bracket
+- GET /league/{league_id}/transactions/{round} — transactions for a week
+- GET /league/{league_id}/traded_picks — traded draft picks
+- GET /state/{sport} — current sport/season state
+- GET /user/{user_id}/drafts/{sport}/{season} — a user's drafts
+- GET /league/{league_id}/drafts — a league's drafts
+- GET /draft/{draft_id} — a specific draft
+- GET /draft/{draft_id}/picks — picks in a draft
+- GET /draft/{draft_id}/traded_picks — traded picks in a draft
+- GET /players/{sport} — all players (~5MB; cache daily)
+- GET /players/{sport}/trending/{type} — trending adds/drops
+
+## Docs
+- [Introduction](https://docs.sleeper.com/): Overview, authentication (none), rate limits, and object schemas.
+- [Avatars](https://sleepercdn.com/avatars/): User/league avatar images (add /thumbs/ for thumbnails).
+
+## Conventions
+- Authentication: none (public read-only). Access is IP-rate-limited (~1000 req/min).
+- Errors: bare HTTP status codes (400, 404, 429, 500, 503).
+- Versioning: URI path, v1.
+- Pagination: none; collections return full arrays.

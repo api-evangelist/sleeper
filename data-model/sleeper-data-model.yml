@@ -1,0 +1,93 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sleeper-openapi.yml
+description: >-
+  Entity-relationship graph for the Sleeper fantasy data model, derived from the
+  id-reference fields across the documented objects (user_id, league_id,
+  roster_id, draft_id, player_id).
+entities:
+  - name: User
+    id: user_id
+    description: A Sleeper account. Identified by user_id; also addressable by username.
+  - name: League
+    id: league_id
+    description: A fantasy league for a sport/season. Links to its Draft and prior-season League.
+  - name: Roster
+    id: roster_id
+    description: A team within a league, owned by a user, holding player_ids.
+  - name: Matchup
+    id: matchup_id
+    description: Weekly head-to-head; rosters sharing a matchup_id play each other.
+  - name: Transaction
+    id: transaction_id
+    description: A trade, waiver claim, or free-agent move affecting rosters and players.
+  - name: Draft
+    id: draft_id
+    description: A league's draft event, producing draft picks.
+  - name: DraftPick
+    id: pick_no
+    description: A single selection in a draft, tying a player to a roster/user.
+  - name: TradedPick
+    description: A future draft pick that has changed hands between rosters.
+  - name: Player
+    id: player_id
+    description: An NFL (or other sport) player in the global player pool.
+  - name: SportState
+    description: Current week/season/season_type for a sport.
+relationships:
+  - from: League
+    to: Draft
+    type: has_one
+    via: draft_id
+  - from: League
+    to: League
+    type: belongs_to
+    via: previous_league_id
+  - from: League
+    to: Roster
+    type: has_many
+    via: league_id
+  - from: Roster
+    to: User
+    type: belongs_to
+    via: owner_id
+  - from: Roster
+    to: Player
+    type: has_many
+    via: players
+  - from: Matchup
+    to: Roster
+    type: belongs_to
+    via: roster_id
+  - from: Transaction
+    to: Roster
+    type: has_many
+    via: roster_ids
+  - from: Transaction
+    to: Player
+    type: has_many
+    via: adds/drops
+  - from: Draft
+    to: League
+    type: belongs_to
+    via: league_id
+  - from: DraftPick
+    to: Draft
+    type: belongs_to
+    via: draft_id
+  - from: DraftPick
+    to: Roster
+    type: belongs_to
+    via: roster_id
+  - from: DraftPick
+    to: Player
+    type: belongs_to
+    via: player_id
+  - from: DraftPick
+    to: User
+    type: belongs_to
+    via: picked_by
+  - from: TrendingPlayer
+    to: Player
+    type: belongs_to
+    via: player_id

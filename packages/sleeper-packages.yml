@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sleeper.com/
+note: >-
+  Sleeper does not publish any first-party client SDKs. The community maintains
+  several third-party wrappers around the public read-only API; they are listed
+  here with official:false. Because there is no first-party SDK, no `SDKs`
+  rating pointer is emitted.
+packages:
+  - language: python
+    registry: pypi
+    name: sleeper-api-wrapper
+    url: https://pypi.org/project/sleeper-api-wrapper/
+    install: pip install sleeper-api-wrapper
+    official: false
+    maintainer: SwapnikKatkoori (community)
+  - language: go
+    registry: github
+    name: sleeper-api-go
+    url: https://github.com/jcobian/sleeper-api-go
+    install: go get github.com/jcobian/sleeper-api-go
+    official: false
+    maintainer: jcobian (community)

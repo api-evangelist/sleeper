@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sleeper.com/
+description: >-
+  Cross-cutting request/response conventions for the Sleeper read-only API:
+  transport, authentication posture, HTTP method semantics, versioning, error
+  signaling, rate-limit handling, and the recommended caching pattern for large
+  payloads. Sleeper's API is deliberately minimal — no auth, GET-only, JSON.
+base_url: https://api.sleeper.app/v1
+api_style: REST over HTTPS, GET-only, JSON responses
+authentication:
+  scheme: none
+  detail: authentication/sleeper-authentication.yml
+  note: Public read-only API; no token, key, or OAuth. Access is IP-rate-limited.
+http_methods:
+  used: [GET]
+  note: >-
+    Every documented operation is a GET. There are no write operations, so all
+    calls are safe and idempotent by HTTP semantics; there is no
+    Idempotency-Key contract because nothing is created or mutated.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: lifecycle/sleeper-lifecycle.yml
+pagination:
+  supported: false
+  note: >-
+    Collection endpoints return complete arrays (rosters, matchups, users,
+    transactions per week). Trending players supports limit + lookback_hours
+    query params rather than cursor/offset pagination.
+error_envelope:
+  style: http-status
+  detail: errors/sleeper-problem-types.yml
+  note: Errors are conveyed by HTTP status code; bodies are minimal.
+rate_limiting:
+  limit: ~1000 requests per minute (per IP)
+  enforcement: Sustained overage risks an IP block; the API returns 429 when throttled.
+  signaling: No documented rate-limit response headers.
+caching:
+  guidance: >-
+    The /players/{sport} endpoint returns a ~5MB payload of all players and
+    should be fetched at most once per day and cached locally, not per request.
+  avatars: Avatar images are served from https://sleepercdn.com/avatars/{avatar_id}
+    (add /thumbs/ for thumbnails).

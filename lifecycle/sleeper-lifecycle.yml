@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sleeper.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://docs.sleeper.com/
+  note: The API is versioned in the path (api.sleeper.app/v1). Only v1 is documented.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation policy or RFC 8594 Sunset/Deprecation header support.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+deprecated_operations: []
