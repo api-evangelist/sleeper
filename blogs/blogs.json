@@ -5,7 +5,7 @@
       "source": "https://support.sleeper.com/feed.xml",
       "feed_url": "https://support.sleeper.com/feed.xml",
       "title": "",
-      "saved": 0,
+      "saved": 12,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 24,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 36,
+  "fetched": "2026-08-15T12:11:08Z"
 }
