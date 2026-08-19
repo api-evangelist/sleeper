@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sleeper Drafts Playoffs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Playoffs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the playoff winners bracket for a league",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id/winners_bracket",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the playoff winners bracket for a league"
+        },
+        {
+          "info": {
+            "name": "Get the consolation (losers) bracket for a league",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id/losers_bracket",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the consolation (losers) bracket for a league"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

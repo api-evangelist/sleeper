@@ -1,0 +1,362 @@
+{
+  "item": [
+    {
+      "id": "b74cee7d-f096-4177-8e91-ee529b97c6ff",
+      "name": "Playoffs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d350683-d042-477c-a843-fbe6ea956b5c",
+          "name": "Get the playoff winners bracket for a league",
+          "request": {
+            "name": "Get the playoff winners bracket for a league",
+            "description": {},
+            "url": {
+              "path": [
+                "league",
+                ":league_id",
+                "winners_bracket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "league_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35440228-04e6-4a38-8263-1f0a09947ff0",
+              "name": "Array of bracket matchup objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "winners_bracket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"r\": 6211,\n    \"m\": 7964,\n    \"t1\": 8166,\n    \"t2\": 3347,\n    \"w\": 2049,\n    \"l\": 8264\n  },\n  {\n    \"r\": 7536,\n    \"m\": 7753,\n    \"t1\": 4993,\n    \"t2\": 3334,\n    \"w\": 8689,\n    \"l\": 595\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1006344b-aa28-4d3b-b62f-c7b0d31d2f9c",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "winners_bracket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0e8fbeeb-1e02-41d6-a644-59492adc905a",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "winners_bracket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d056dbc7-0577-433e-a713-0ac59b65b297",
+          "name": "Get the consolation (losers) bracket for a league",
+          "request": {
+            "name": "Get the consolation (losers) bracket for a league",
+            "description": {},
+            "url": {
+              "path": [
+                "league",
+                ":league_id",
+                "losers_bracket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "league_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fd62b63-b864-49df-885f-8a53ba03a6c1",
+              "name": "Array of bracket matchup objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "losers_bracket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"r\": 6211,\n    \"m\": 7964,\n    \"t1\": 8166,\n    \"t2\": 3347,\n    \"w\": 2049,\n    \"l\": 8264\n  },\n  {\n    \"r\": 7536,\n    \"m\": 7753,\n    \"t1\": 4993,\n    \"t2\": 3334,\n    \"w\": 8689,\n    \"l\": 595\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e41a98db-0efc-4b23-a814-c411310e7603",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "losers_bracket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "696a8a68-4a48-49cd-85a6-09dce1adb10b",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "losers_bracket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sleeper.app/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cce70a2a-5c32-4caf-90cf-d7f192e0174e",
+    "name": "Sleeper Drafts Playoffs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.\n\nContact Support:\n Name: Sleeper API Docs",
+      "type": "text/plain"
+    }
+  }
+}

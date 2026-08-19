@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sleeper Drafts State API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "State",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the current state of a sport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/state/:sport",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Current week, season, season type and related league-year state for a sport."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

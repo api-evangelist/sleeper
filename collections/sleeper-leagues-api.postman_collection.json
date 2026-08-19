@@ -1,0 +1,755 @@
+{
+  "item": [
+    {
+      "id": "312df2dc-0f4a-4bd2-acc2-35f87b888d5d",
+      "name": "Leagues",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3843633-a00c-4393-b700-02a76b2c7a3e",
+          "name": "Get all leagues for a user",
+          "request": {
+            "name": "Get all leagues for a user",
+            "description": {
+              "content": "All leagues a user is a member of for a given sport and season.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                ":user_id",
+                "leagues",
+                ":sport",
+                ":season"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sport",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "season",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee3cf83a-9323-448b-a82f-cb0b863363e5",
+              "name": "Array of league objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    ":user_id",
+                    "leagues",
+                    ":sport",
+                    ":season"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "season",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"league_id\": \"string\",\n    \"name\": \"string\",\n    \"status\": \"string\",\n    \"sport\": \"string\",\n    \"season\": \"string\",\n    \"season_type\": \"string\",\n    \"total_rosters\": 5821,\n    \"settings\": {},\n    \"scoring_settings\": {},\n    \"roster_positions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"previous_league_id\": \"string\",\n    \"draft_id\": \"string\",\n    \"avatar\": \"string\"\n  },\n  {\n    \"league_id\": \"string\",\n    \"name\": \"string\",\n    \"status\": \"string\",\n    \"sport\": \"string\",\n    \"season\": \"string\",\n    \"season_type\": \"string\",\n    \"total_rosters\": 5922,\n    \"settings\": {},\n    \"scoring_settings\": {},\n    \"roster_positions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"previous_league_id\": \"string\",\n    \"draft_id\": \"string\",\n    \"avatar\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec54dff3-0109-4122-8ddb-6c0055cd4b54",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    ":user_id",
+                    "leagues",
+                    ":sport",
+                    ":season"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "season",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c510e369-d28c-49fb-96c6-dcacba8489be",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    ":user_id",
+                    "leagues",
+                    ":sport",
+                    ":season"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "season",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e41c2399-c32f-441b-8ecd-89f2ede62c11",
+          "name": "Get a specific league",
+          "request": {
+            "name": "Get a specific league",
+            "description": {},
+            "url": {
+              "path": [
+                "league",
+                ":league_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "league_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "273b5455-7f5b-4d7c-aa64-cb4f3b138417",
+              "name": "A league object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"league_id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"string\",\n  \"sport\": \"string\",\n  \"season\": \"string\",\n  \"season_type\": \"string\",\n  \"total_rosters\": 5624,\n  \"settings\": {},\n  \"scoring_settings\": {},\n  \"roster_positions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"previous_league_id\": \"string\",\n  \"draft_id\": \"string\",\n  \"avatar\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e81a81cd-ac7a-44d8-98fd-11667b842ca1",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "087d801d-0281-419d-8be1-df76283c1283",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ce37a71-2b56-4087-80d3-d1f138eb96d5",
+          "name": "Get all rosters in a league",
+          "request": {
+            "name": "Get all rosters in a league",
+            "description": {},
+            "url": {
+              "path": [
+                "league",
+                ":league_id",
+                "rosters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "league_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39332894-0428-4411-9bfd-b5bff49d823b",
+              "name": "Array of roster objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "rosters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"roster_id\": 4806,\n    \"owner_id\": \"string\",\n    \"league_id\": \"string\",\n    \"players\": [\n      \"string\",\n      \"string\"\n    ],\n    \"starters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"reserve\": [\n      \"string\",\n      \"string\"\n    ],\n    \"settings\": {}\n  },\n  {\n    \"roster_id\": 2113,\n    \"owner_id\": \"string\",\n    \"league_id\": \"string\",\n    \"players\": [\n      \"string\",\n      \"string\"\n    ],\n    \"starters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"reserve\": [\n      \"string\",\n      \"string\"\n    ],\n    \"settings\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a7a08c2-9c98-462b-b86d-dd6f09ded765",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "rosters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b487585-dd04-442c-a58b-158bea38db5e",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "rosters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb3e8eff-5b24-4618-835e-4ecfc6d75bda",
+          "name": "Get all users in a league",
+          "request": {
+            "name": "Get all users in a league",
+            "description": {},
+            "url": {
+              "path": [
+                "league",
+                ":league_id",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "league_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46729547-1ff9-4bec-a90d-84a61af90165",
+              "name": "Array of user objects (with league-specific metadata).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"user_id\": \"string\",\n    \"username\": \"string\",\n    \"display_name\": \"string\",\n    \"avatar\": \"string\",\n    \"metadata\": {}\n  },\n  {\n    \"user_id\": \"string\",\n    \"username\": \"string\",\n    \"display_name\": \"string\",\n    \"avatar\": \"string\",\n    \"metadata\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8aed66b-fdb1-41aa-925f-0d87272eda9a",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5faf55d6-05ae-41f9-a130-a9a5dc4922c2",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sleeper.app/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6a3cfbc2-f682-4cd6-ae52-6a1989b9f6f6",
+    "name": "Sleeper Drafts Leagues API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.\n\nContact Support:\n Name: Sleeper API Docs",
+      "type": "text/plain"
+    }
+  }
+}

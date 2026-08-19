@@ -2,67 +2,71 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/sleeper-openapi.yml
-note: >-
-  Sleeper does not publish an official hosted or remote MCP server. This is a
-  candidate tool list derived one-to-one from the documented read-only
-  operations, suitable for wrapping the public API as an MCP server. All tools
-  are read-only (no auth required).
+note: Sleeper does not publish an official hosted or remote MCP server. This is a candidate tool list
+  derived one-to-one from the documented read-only operations, suitable for wrapping the public API as
+  an MCP server. All tools are read-only (no auth required).
 server:
   name: sleeper
   transport: stdio
   auth: none
 tools:
-  - name: get_user
-    description: Get a Sleeper user by username or user_id.
-    source_operation: openapi/sleeper-openapi.yml#getUser
-  - name: get_user_leagues
-    description: List all leagues for a user in a sport/season.
-    source_operation: openapi/sleeper-openapi.yml#getUserLeagues
-  - name: get_league
-    description: Get a specific league.
-    source_operation: openapi/sleeper-openapi.yml#getLeague
-  - name: get_league_rosters
-    description: List rosters in a league.
-    source_operation: openapi/sleeper-openapi.yml#getLeagueRosters
-  - name: get_league_users
-    description: List users in a league.
-    source_operation: openapi/sleeper-openapi.yml#getLeagueUsers
-  - name: get_league_matchups
-    description: Get matchups for a league week.
-    source_operation: openapi/sleeper-openapi.yml#getLeagueMatchups
-  - name: get_winners_bracket
-    description: Get the playoff winners bracket.
-    source_operation: openapi/sleeper-openapi.yml#getWinnersBracket
-  - name: get_losers_bracket
-    description: Get the consolation (losers) bracket.
-    source_operation: openapi/sleeper-openapi.yml#getLosersBracket
-  - name: get_league_transactions
-    description: Get transactions (trades/waivers/free agents) for a week.
-    source_operation: openapi/sleeper-openapi.yml#getLeagueTransactions
-  - name: get_league_traded_picks
-    description: List traded draft picks in a league.
-    source_operation: openapi/sleeper-openapi.yml#getLeagueTradedPicks
-  - name: get_sport_state
-    description: Get the current week/season/state for a sport.
-    source_operation: openapi/sleeper-openapi.yml#getSportState
-  - name: get_user_drafts
-    description: List a user's drafts for a sport/season.
-    source_operation: openapi/sleeper-openapi.yml#getUserDrafts
-  - name: get_league_drafts
-    description: List a league's drafts.
-    source_operation: openapi/sleeper-openapi.yml#getLeagueDrafts
-  - name: get_draft
-    description: Get a specific draft.
-    source_operation: openapi/sleeper-openapi.yml#getDraft
-  - name: get_draft_picks
-    description: List picks in a draft.
-    source_operation: openapi/sleeper-openapi.yml#getDraftPicks
-  - name: get_draft_traded_picks
-    description: List traded picks in a draft.
-    source_operation: openapi/sleeper-openapi.yml#getDraftTradedPicks
-  - name: get_all_players
-    description: Fetch all players for a sport (large payload; cache daily).
-    source_operation: openapi/sleeper-openapi.yml#getAllPlayers
-  - name: get_trending_players
-    description: Get trending added/dropped players.
-    source_operation: openapi/sleeper-openapi.yml#getTrendingPlayers
+- name: get_user
+  description: Get a Sleeper user by username or user_id.
+  source_operation: openapi/sleeper-openapi.yml#getUser
+- name: get_user_leagues
+  description: List all leagues for a user in a sport/season.
+  source_operation: openapi/sleeper-openapi.yml#getUserLeagues
+- name: get_league
+  description: Get a specific league.
+  source_operation: openapi/sleeper-openapi.yml#getLeague
+- name: get_league_rosters
+  description: List rosters in a league.
+  source_operation: openapi/sleeper-openapi.yml#getLeagueRosters
+- name: get_league_users
+  description: List users in a league.
+  source_operation: openapi/sleeper-openapi.yml#getLeagueUsers
+- name: get_league_matchups
+  description: Get matchups for a league week.
+  source_operation: openapi/sleeper-openapi.yml#getLeagueMatchups
+- name: get_winners_bracket
+  description: Get the playoff winners bracket.
+  source_operation: openapi/sleeper-openapi.yml#getWinnersBracket
+- name: get_losers_bracket
+  description: Get the consolation (losers) bracket.
+  source_operation: openapi/sleeper-openapi.yml#getLosersBracket
+- name: get_league_transactions
+  description: Get transactions (trades/waivers/free agents) for a week.
+  source_operation: openapi/sleeper-openapi.yml#getLeagueTransactions
+- name: get_league_traded_picks
+  description: List traded draft picks in a league.
+  source_operation: openapi/sleeper-openapi.yml#getLeagueTradedPicks
+- name: get_sport_state
+  description: Get the current week/season/state for a sport.
+  source_operation: openapi/sleeper-openapi.yml#getSportState
+- name: get_user_drafts
+  description: List a user's drafts for a sport/season.
+  source_operation: openapi/sleeper-openapi.yml#getUserDrafts
+- name: get_league_drafts
+  description: List a league's drafts.
+  source_operation: openapi/sleeper-openapi.yml#getLeagueDrafts
+- name: get_draft
+  description: Get a specific draft.
+  source_operation: openapi/sleeper-openapi.yml#getDraft
+- name: get_draft_picks
+  description: List picks in a draft.
+  source_operation: openapi/sleeper-openapi.yml#getDraftPicks
+- name: get_draft_traded_picks
+  description: List traded picks in a draft.
+  source_operation: openapi/sleeper-openapi.yml#getDraftTradedPicks
+- name: get_all_players
+  description: Fetch all players for a sport (large payload; cache daily).
+  source_operation: openapi/sleeper-openapi.yml#getAllPlayers
+- name: get_trending_players
+  description: Get trending added/dropped players.
+  source_operation: openapi/sleeper-openapi.yml#getTrendingPlayers
+deployment:
+  mode: none
+  verified: derived
+  tools: 18
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sleeper Drafts Users API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a user by username or user_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/user/:id_or_username",
+            "params": [
+              {
+                "name": "id_or_username",
+                "value": "",
+                "type": "path",
+                "description": "The Sleeper username or numeric user_id."
+              }
+            ]
+          },
+          "docs": "Retrieve a user object by either their username or their numeric user_id. Returns the user's user_id, username, display_name and avatar."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

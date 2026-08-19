@@ -1,0 +1,339 @@
+{
+  "item": [
+    {
+      "id": "33f6fb7b-7b9b-4d6f-8054-24264e136083",
+      "name": "Players",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "59faa01e-42aa-419b-9afe-deb7e30e418e",
+          "name": "Get all players for a sport",
+          "request": {
+            "name": "Get all players for a sport",
+            "description": {
+              "content": "Fetch every player in the sport (a large ~5MB payload). Intended to be called at most once per day and cached, not on every request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "players",
+                ":sport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sport",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e294c625-b513-45e6-9f0e-b5adbf1efdfd",
+              "name": "A map of player_id to player object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "players",
+                    ":sport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"player_id\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"full_name\": \"string\",\n    \"team\": \"string\",\n    \"position\": \"string\",\n    \"fantasy_positions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"status\": \"string\",\n    \"injury_status\": \"string\",\n    \"number\": 4433\n  },\n  \"key_1\": {\n    \"player_id\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"full_name\": \"string\",\n    \"team\": \"string\",\n    \"position\": \"string\",\n    \"fantasy_positions\": [\n      \"string\",\n      \"string\"\n    ],\n    \"status\": \"string\",\n    \"injury_status\": \"string\",\n    \"number\": 5402\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9db8f30-9eb8-456e-a739-eb8ad29fd748",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "players",
+                    ":sport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b723d339-e6fa-4e84-936a-6de4826eca91",
+          "name": "Get trending players (adds or drops)",
+          "request": {
+            "name": "Get trending players (adds or drops)",
+            "description": {},
+            "url": {
+              "path": [
+                "players",
+                ":sport",
+                "trending",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lookback_hours",
+                  "value": "24",
+                  "description": "Hours to look back (default 24)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Number of results (default 25)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sport",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) add or drop."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6ca54f3-d2ef-4b82-bda8-c6e448975953",
+              "name": "Array of trending player objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "players",
+                    ":sport",
+                    "trending",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lookback_hours",
+                      "value": "24"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) add or drop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"player_id\": \"string\",\n    \"count\": 2783\n  },\n  {\n    \"player_id\": \"string\",\n    \"count\": 9703\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd62634f-3044-427d-bbb4-9714cbc0d9fa",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "players",
+                    ":sport",
+                    "trending",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lookback_hours",
+                      "value": "24"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) add or drop."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sleeper.app/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a4ff9d88-4687-41c3-9ea0-06ec6866c4a0",
+    "name": "Sleeper Drafts Players API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.\n\nContact Support:\n Name: Sleeper API Docs",
+      "type": "text/plain"
+    }
+  }
+}

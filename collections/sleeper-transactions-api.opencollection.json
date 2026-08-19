@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sleeper Drafts Transactions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get transactions (trades, waivers, free-agent moves) for a week",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id/transactions/:round",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "round",
+                "value": "",
+                "type": "path",
+                "description": "The week/round of transactions."
+              }
+            ]
+          },
+          "docs": "Get transactions (trades, waivers, free-agent moves) for a week"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

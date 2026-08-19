@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sleeper Drafts API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drafts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all traded draft picks in a league",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id/traded_picks",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all traded draft picks in a league"
+        },
+        {
+          "info": {
+            "name": "Get all drafts for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/user/:user_id/drafts/:sport/:season",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sport",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all drafts for a user"
+        },
+        {
+          "info": {
+            "name": "Get all drafts for a league",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id/drafts",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all drafts for a league"
+        },
+        {
+          "info": {
+            "name": "Get a specific draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/draft/:draft_id",
+            "params": [
+              {
+                "name": "draft_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific draft"
+        },
+        {
+          "info": {
+            "name": "Get all picks in a draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/draft/:draft_id/picks",
+            "params": [
+              {
+                "name": "draft_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all picks in a draft"
+        },
+        {
+          "info": {
+            "name": "Get all traded picks in a draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/draft/:draft_id/traded_picks",
+            "params": [
+              {
+                "name": "draft_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all traded picks in a draft"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

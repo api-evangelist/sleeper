@@ -1,0 +1,1082 @@
+{
+  "item": [
+    {
+      "id": "aae960a1-e59c-4843-8700-dd8e00c502af",
+      "name": "Drafts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b2d609d-ed3a-459d-a310-f0deeef4c1c4",
+          "name": "Get all traded draft picks in a league",
+          "request": {
+            "name": "Get all traded draft picks in a league",
+            "description": {},
+            "url": {
+              "path": [
+                "league",
+                ":league_id",
+                "traded_picks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "league_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a526439-9681-41a5-9408-e07ea965d518",
+              "name": "Array of traded pick objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "traded_picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"season\": \"string\",\n    \"round\": 1883,\n    \"roster_id\": 7571,\n    \"previous_owner_id\": 5276,\n    \"owner_id\": 7645\n  },\n  {\n    \"season\": \"string\",\n    \"round\": 74,\n    \"roster_id\": 4791,\n    \"previous_owner_id\": 6046,\n    \"owner_id\": 274\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40824016-f6c6-4e26-be09-97ee29ec3d48",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "traded_picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ad9fc07-8d5b-4978-8235-b8d4902ce9c7",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "traded_picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a776c74e-008b-411c-9658-0050ebd1fd43",
+          "name": "Get all drafts for a user",
+          "request": {
+            "name": "Get all drafts for a user",
+            "description": {},
+            "url": {
+              "path": [
+                "user",
+                ":user_id",
+                "drafts",
+                ":sport",
+                ":season"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sport",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "season",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "715ae627-6adc-4b26-a69c-e55c7547811e",
+              "name": "Array of draft objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    ":user_id",
+                    "drafts",
+                    ":sport",
+                    ":season"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "season",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"draft_id\": \"string\",\n    \"league_id\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"sport\": \"string\",\n    \"season\": \"string\",\n    \"settings\": {},\n    \"draft_order\": {},\n    \"slot_to_roster_id\": {},\n    \"start_time\": 2509\n  },\n  {\n    \"draft_id\": \"string\",\n    \"league_id\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"sport\": \"string\",\n    \"season\": \"string\",\n    \"settings\": {},\n    \"draft_order\": {},\n    \"slot_to_roster_id\": {},\n    \"start_time\": 2020\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5af1c825-b33d-4d65-8d7d-3c6608e8464b",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    ":user_id",
+                    "drafts",
+                    ":sport",
+                    ":season"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "season",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5983758-f1e5-4c91-bd60-ef4c6d18a2fa",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    ":user_id",
+                    "drafts",
+                    ":sport",
+                    ":season"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "season",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44e0a218-368d-4641-8fec-1e524e685045",
+          "name": "Get all drafts for a league",
+          "request": {
+            "name": "Get all drafts for a league",
+            "description": {},
+            "url": {
+              "path": [
+                "league",
+                ":league_id",
+                "drafts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "league_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "478a4498-0dae-4e4f-bdf3-271e4e00770f",
+              "name": "Array of draft objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"draft_id\": \"string\",\n    \"league_id\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"sport\": \"string\",\n    \"season\": \"string\",\n    \"settings\": {},\n    \"draft_order\": {},\n    \"slot_to_roster_id\": {},\n    \"start_time\": 2509\n  },\n  {\n    \"draft_id\": \"string\",\n    \"league_id\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"sport\": \"string\",\n    \"season\": \"string\",\n    \"settings\": {},\n    \"draft_order\": {},\n    \"slot_to_roster_id\": {},\n    \"start_time\": 2020\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00479774-6eec-42c7-a650-a0a4416ee900",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bf7390e3-8555-426d-89d5-45454a096552",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d874197-a483-410a-8914-a4d400f5f47b",
+          "name": "Get a specific draft",
+          "request": {
+            "name": "Get a specific draft",
+            "description": {},
+            "url": {
+              "path": [
+                "draft",
+                ":draft_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "draft_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4126e344-426a-45af-ab88-7122bdae90f7",
+              "name": "A draft object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"draft_id\": \"string\",\n  \"league_id\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"sport\": \"string\",\n  \"season\": \"string\",\n  \"settings\": {},\n  \"draft_order\": {},\n  \"slot_to_roster_id\": {},\n  \"start_time\": 7920\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46709337-06ec-4f42-bf54-f1a24259459f",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c48a8faa-982f-429d-b7bb-b8db5aa729ae",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69075095-a28b-4028-8800-e4c4797a90d0",
+          "name": "Get all picks in a draft",
+          "request": {
+            "name": "Get all picks in a draft",
+            "description": {},
+            "url": {
+              "path": [
+                "draft",
+                ":draft_id",
+                "picks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "draft_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9ccfa32-040e-43ec-81ea-546d3c476928",
+              "name": "Array of draft pick objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id",
+                    "picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"draft_id\": \"string\",\n    \"pick_no\": 1977,\n    \"round\": 8712,\n    \"roster_id\": 6816,\n    \"player_id\": \"string\",\n    \"picked_by\": \"string\",\n    \"metadata\": {}\n  },\n  {\n    \"draft_id\": \"string\",\n    \"pick_no\": 7333,\n    \"round\": 3004,\n    \"roster_id\": 7320,\n    \"player_id\": \"string\",\n    \"picked_by\": \"string\",\n    \"metadata\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24433a12-fc1b-4c8b-80fb-c8e4cca28012",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id",
+                    "picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4668ac2-105e-460f-8c5d-c22c73ef63b9",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id",
+                    "picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bbd5c9a-5c51-45de-bc09-ffe41b57b1ba",
+          "name": "Get all traded picks in a draft",
+          "request": {
+            "name": "Get all traded picks in a draft",
+            "description": {},
+            "url": {
+              "path": [
+                "draft",
+                ":draft_id",
+                "traded_picks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "draft_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3248d6d2-bc51-496a-9a03-ec2e9fedbee9",
+              "name": "Array of traded pick objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id",
+                    "traded_picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"season\": \"string\",\n    \"round\": 1883,\n    \"roster_id\": 7571,\n    \"previous_owner_id\": 5276,\n    \"owner_id\": 7645\n  },\n  {\n    \"season\": \"string\",\n    \"round\": 74,\n    \"roster_id\": 4791,\n    \"previous_owner_id\": 6046,\n    \"owner_id\": 274\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e7c5dd8-4e97-4f1c-a3c7-6f53e1fd5ffd",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id",
+                    "traded_picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62675b4a-b69a-45a2-9eab-c9a34f0e7d87",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "draft",
+                    ":draft_id",
+                    "traded_picks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "draft_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sleeper.app/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "016f3e18-4a2a-4832-9b61-32f06f924e46",
+    "name": "Sleeper Drafts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.\n\nContact Support:\n Name: Sleeper API Docs",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "item": [
+    {
+      "id": "ed272738-6dc5-4dd6-bac8-9363723e65a4",
+      "name": "Transactions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31aec31d-6dcc-45bb-8d6a-ec704f90a981",
+          "name": "Get transactions (trades, waivers, free-agent moves) for a week",
+          "request": {
+            "name": "Get transactions (trades, waivers, free-agent moves) for a week",
+            "description": {},
+            "url": {
+              "path": [
+                "league",
+                ":league_id",
+                "transactions",
+                ":round"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "league_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "round",
+                  "description": "(Required) The week/round of transactions."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ac9d3c5-3581-42a5-83f0-999753c26151",
+              "name": "Array of transaction objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "transactions",
+                    ":round"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "round",
+                      "description": "(Required) The week/round of transactions."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"transaction_id\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"roster_ids\": [\n      749,\n      7788\n    ],\n    \"adds\": {},\n    \"drops\": {},\n    \"draft_picks\": [\n      {\n        \"season\": \"string\",\n        \"round\": 1334,\n        \"roster_id\": 8738,\n        \"previous_owner_id\": 4538,\n        \"owner_id\": 5211\n      },\n      {\n        \"season\": \"string\",\n        \"round\": 3803,\n        \"roster_id\": 1214,\n        \"previous_owner_id\": 5495,\n        \"owner_id\": 4791\n      }\n    ],\n    \"created\": 8385\n  },\n  {\n    \"transaction_id\": \"string\",\n    \"type\": \"string\",\n    \"status\": \"string\",\n    \"roster_ids\": [\n      407,\n      2684\n    ],\n    \"adds\": {},\n    \"drops\": {},\n    \"draft_picks\": [\n      {\n        \"season\": \"string\",\n        \"round\": 3530,\n        \"roster_id\": 8643,\n        \"previous_owner_id\": 5,\n        \"owner_id\": 5255\n      },\n      {\n        \"season\": \"string\",\n        \"round\": 4462,\n        \"roster_id\": 1497,\n        \"previous_owner_id\": 2882,\n        \"owner_id\": 2488\n      }\n    ],\n    \"created\": 1559\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "045ab4bd-1f7e-48cc-a1be-034d438f0d07",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "transactions",
+                    ":round"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "round",
+                      "description": "(Required) The week/round of transactions."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8cf179b1-3efb-4d0d-8884-6b4c2dabd707",
+              "name": "Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "league",
+                    ":league_id",
+                    "transactions",
+                    ":round"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "league_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "round",
+                      "description": "(Required) The week/round of transactions."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sleeper.app/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "888d9e28-093c-478f-b54e-4e527d1df5c1",
+    "name": "Sleeper Drafts Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.\n\nContact Support:\n Name: Sleeper API Docs",
+      "type": "text/plain"
+    }
+  }
+}

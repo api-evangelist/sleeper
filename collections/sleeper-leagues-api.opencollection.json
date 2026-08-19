@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sleeper Drafts Leagues API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leagues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all leagues for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/user/:user_id/leagues/:sport/:season",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sport",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "All leagues a user is a member of for a given sport and season."
+        },
+        {
+          "info": {
+            "name": "Get a specific league",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific league"
+        },
+        {
+          "info": {
+            "name": "Get all rosters in a league",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id/rosters",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all rosters in a league"
+        },
+        {
+          "info": {
+            "name": "Get all users in a league",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id/users",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all users in a league"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

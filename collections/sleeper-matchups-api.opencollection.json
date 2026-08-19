@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sleeper Drafts Matchups API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Matchups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all matchups in a league for a week",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/league/:league_id/matchups/:week",
+            "params": [
+              {
+                "name": "league_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "week",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all matchups in a league for a week"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

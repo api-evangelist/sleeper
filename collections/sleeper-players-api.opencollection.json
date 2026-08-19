@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sleeper Drafts Players API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Players",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all players for a sport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/players/:sport",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch every player in the sport (a large ~5MB payload). Intended to be called at most once per day and cached, not on every request."
+        },
+        {
+          "info": {
+            "name": "Get trending players (adds or drops)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleeper.app/v1/players/:sport/trending/:type",
+            "params": [
+              {
+                "name": "sport",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "add or drop."
+              },
+              {
+                "name": "lookback_hours",
+                "value": "",
+                "type": "query",
+                "description": "Hours to look back (default 24)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results (default 25)."
+              }
+            ]
+          },
+          "docs": "Get trending players (adds or drops)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
