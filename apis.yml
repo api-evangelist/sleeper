@@ -121,6 +121,8 @@ apis:
   humanURL: https://docs.sleeper.com/
   baseURL: https://api.sleeper.app/v1
   tags:
+  - States
+  tags_raw:
   - State
   properties:
   - type: OpenAPI
@@ -135,6 +137,8 @@ apis:
   humanURL: https://docs.sleeper.com/
   baseURL: https://api.sleeper.app/v1
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
@@ -149,6 +153,8 @@ apis:
   humanURL: https://docs.sleeper.com/
   baseURL: https://api.sleeper.app/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
