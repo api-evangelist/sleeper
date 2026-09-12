@@ -176,6 +176,8 @@ apis:
   - type: APIReference
     url: https://docs.sleeper.com/
 common:
+- type: Website
+  url: https://www.sleeper.com/
 - type: DomainSecurity
   url: security/sleeper-domain-security.yml
 - type: DeveloperPortal
