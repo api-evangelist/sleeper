@@ -1,20 +1,22 @@
 generated: '2026-07-21'
 method: searched
 host: https://api.sleeper.app
-note: >-
-  Probed the standard /.well-known/ discovery surface on the API host
-  (api.sleeper.app) and the main site (sleeper.com). No well-known documents are
-  published — consistent with a public, no-auth, read-only API.
-documents:
+note: Probed the standard /.well-known/ discovery surface on the API host (api.sleeper.app) and the main
+  site (sleeper.com). No well-known documents are published — consistent with a public, no-auth, read-only
+  API.
+hosts:
+- host: https://api.sleeper.app
+  documents:
   - path: /.well-known/security.txt
-    host: https://api.sleeper.app
     status: 404
   - path: /.well-known/security.txt
-    host: https://sleeper.com
     status: 404
   - path: /.well-known/openid-configuration
-    host: https://api.sleeper.app
     status: 404
   - path: /.well-known/ai-plugin.json
-    host: https://docs.sleeper.com
     status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Sleeper Drafts Transactions API
+  title: Sleeper Transactions API
   version: '1.0'
   description: The Sleeper API is a read-only HTTP API that exposes public fantasy sports data — users, leagues, rosters, matchups, transactions, drafts, draft picks, traded picks, and players. It is free to use and requires no API token, because no content can be modified through it. All endpoints are GET requests that return JSON.
   contact:
@@ -51,22 +51,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
-    TradedPick:
-      type: object
-      properties:
-        season:
-          type: string
-        round:
-          type: integer
-        roster_id:
-          type: integer
-          description: Original owner Roster of the pick
-        previous_owner_id:
-          type: integer
-          description: Previous owner roster_id
-        owner_id:
-          type: integer
-          description: Current owner roster_id
     Transaction:
       type: object
       properties:
@@ -99,6 +83,22 @@ components:
             type: object
         created:
           type: integer
+    TradedPick:
+      type: object
+      properties:
+        season:
+          type: string
+        round:
+          type: integer
+        roster_id:
+          type: integer
+          description: Original owner Roster of the pick
+        previous_owner_id:
+          type: integer
+          description: Previous owner roster_id
+        owner_id:
+          type: integer
+          description: Current owner roster_id
   responses:
     NotFound:
       description: The requested resource was not found.
