@@ -50,6 +50,11 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
   schemas:
     Transaction:
       type: object
@@ -99,8 +104,3 @@ components:
         owner_id:
           type: integer
           description: Current owner roster_id
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-    TooManyRequests:
-      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.

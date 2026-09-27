@@ -195,27 +195,6 @@ components:
         owner_id:
           type: integer
           description: Current owner roster_id
-    DraftPick:
-      type: object
-      properties:
-        draft_id:
-          type: string
-          description: References a Draft by draft_id
-        pick_no:
-          type: integer
-        round:
-          type: integer
-        roster_id:
-          type: integer
-          description: References a Roster by roster_id
-        player_id:
-          type: string
-          description: References a Player by player_id
-        picked_by:
-          type: string
-          description: References a User by user_id
-        metadata:
-          type: object
     Draft:
       type: object
       properties:
@@ -244,8 +223,29 @@ components:
           type: object
         start_time:
           type: integer
+    DraftPick:
+      type: object
+      properties:
+        draft_id:
+          type: string
+          description: References a Draft by draft_id
+        pick_no:
+          type: integer
+        round:
+          type: integer
+        roster_id:
+          type: integer
+          description: References a Roster by roster_id
+        player_id:
+          type: string
+          description: References a Player by player_id
+        picked_by:
+          type: string
+          description: References a User by user_id
+        metadata:
+          type: object
   responses:
-    NotFound:
-      description: The requested resource was not found.
     TooManyRequests:
       description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
+    NotFound:
+      description: The requested resource was not found.

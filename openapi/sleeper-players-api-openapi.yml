@@ -90,16 +90,10 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
   schemas:
-    TrendingPlayer:
-      type: object
-      properties:
-        player_id:
-          type: string
-          description: References a Player by player_id
-        count:
-          type: integer
-          description: Number of adds or drops in the lookback window
     Player:
       type: object
       properties:
@@ -127,6 +121,12 @@ components:
         number:
           type: integer
           nullable: true
-  responses:
-    TooManyRequests:
-      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
+    TrendingPlayer:
+      type: object
+      properties:
+        player_id:
+          type: string
+          description: References a Player by player_id
+        count:
+          type: integer
+          description: Number of adds or drops in the lookback window
