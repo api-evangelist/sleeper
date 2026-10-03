@@ -179,22 +179,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
-    TradedPick:
-      type: object
-      properties:
-        season:
-          type: string
-        round:
-          type: integer
-        roster_id:
-          type: integer
-          description: Original owner Roster of the pick
-        previous_owner_id:
-          type: integer
-          description: Previous owner roster_id
-        owner_id:
-          type: integer
-          description: Current owner roster_id
     Draft:
       type: object
       properties:
@@ -223,6 +207,22 @@ components:
           type: object
         start_time:
           type: integer
+    TradedPick:
+      type: object
+      properties:
+        season:
+          type: string
+        round:
+          type: integer
+        roster_id:
+          type: integer
+          description: Original owner Roster of the pick
+        previous_owner_id:
+          type: integer
+          description: Previous owner roster_id
+        owner_id:
+          type: integer
+          description: Current owner roster_id
     DraftPick:
       type: object
       properties:

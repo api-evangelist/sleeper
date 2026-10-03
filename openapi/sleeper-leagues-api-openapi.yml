@@ -129,44 +129,12 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
+    NotFound:
+      description: The requested resource was not found.
   schemas:
-    League:
-      type: object
-      properties:
-        league_id:
-          type: string
-        name:
-          type: string
-        status:
-          type: string
-          description: e.g. pre_draft
-          drafting: null
-          in_season: null
-          complete: null
-        sport:
-          type: string
-        season:
-          type: string
-        season_type:
-          type: string
-        total_rosters:
-          type: integer
-        settings:
-          type: object
-        scoring_settings:
-          type: object
-        roster_positions:
-          type: array
-          items:
-            type: string
-        previous_league_id:
-          type: string
-          description: References the prior season League by league_id
-        draft_id:
-          type: string
-          description: References the Draft by draft_id
-        avatar:
-          type: string
     User:
       type: object
       properties:
@@ -208,8 +176,40 @@ components:
             type: string
         settings:
           type: object
-  responses:
-    TooManyRequests:
-      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
-    NotFound:
-      description: The requested resource was not found.
+    League:
+      type: object
+      properties:
+        league_id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          description: e.g. pre_draft
+          drafting: null
+          in_season: null
+          complete: null
+        sport:
+          type: string
+        season:
+          type: string
+        season_type:
+          type: string
+        total_rosters:
+          type: integer
+        settings:
+          type: object
+        scoring_settings:
+          type: object
+        roster_positions:
+          type: array
+          items:
+            type: string
+        previous_league_id:
+          type: string
+          description: References the prior season League by league_id
+        draft_id:
+          type: string
+          description: References the Draft by draft_id
+        avatar:
+          type: string

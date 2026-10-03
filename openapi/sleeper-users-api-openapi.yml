@@ -43,11 +43,6 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-    TooManyRequests:
-      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
   schemas:
     User:
       type: object
@@ -63,3 +58,8 @@ components:
           description: Avatar id; resolve at https://sleepercdn.com/avatars/{avatar}
         metadata:
           type: object
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
+    NotFound:
+      description: The requested resource was not found.

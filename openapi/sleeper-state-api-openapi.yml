@@ -41,9 +41,6 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  responses:
-    TooManyRequests:
-      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
   schemas:
     SportState:
       type: object
@@ -65,3 +62,6 @@ components:
           type: integer
         leg:
           type: integer
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
