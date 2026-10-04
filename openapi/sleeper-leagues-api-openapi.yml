@@ -129,26 +129,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  responses:
-    TooManyRequests:
-      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
-    NotFound:
-      description: The requested resource was not found.
   schemas:
-    User:
-      type: object
-      properties:
-        user_id:
-          type: string
-        username:
-          type: string
-        display_name:
-          type: string
-        avatar:
-          type: string
-          description: Avatar id; resolve at https://sleepercdn.com/avatars/{avatar}
-        metadata:
-          type: object
     Roster:
       type: object
       properties:
@@ -175,6 +156,20 @@ components:
           items:
             type: string
         settings:
+          type: object
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+        username:
+          type: string
+        display_name:
+          type: string
+        avatar:
+          type: string
+          description: Avatar id; resolve at https://sleepercdn.com/avatars/{avatar}
+        metadata:
           type: object
     League:
       type: object
@@ -213,3 +208,8 @@ components:
           description: References the Draft by draft_id
         avatar:
           type: string
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
+    NotFound:
+      description: The requested resource was not found.

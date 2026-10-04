@@ -50,7 +50,28 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    TooManyRequests:
+      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
   schemas:
+    TradedPick:
+      type: object
+      properties:
+        season:
+          type: string
+        round:
+          type: integer
+        roster_id:
+          type: integer
+          description: Original owner Roster of the pick
+        previous_owner_id:
+          type: integer
+          description: Previous owner roster_id
+        owner_id:
+          type: integer
+          description: Current owner roster_id
     Transaction:
       type: object
       properties:
@@ -83,24 +104,3 @@ components:
             type: object
         created:
           type: integer
-    TradedPick:
-      type: object
-      properties:
-        season:
-          type: string
-        round:
-          type: integer
-        roster_id:
-          type: integer
-          description: Original owner Roster of the pick
-        previous_owner_id:
-          type: integer
-          description: Previous owner roster_id
-        owner_id:
-          type: integer
-          description: Current owner roster_id
-  responses:
-    TooManyRequests:
-      description: Rate limit exceeded — stay under 1000 API calls per minute to avoid IP blocks.
-    NotFound:
-      description: The requested resource was not found.
